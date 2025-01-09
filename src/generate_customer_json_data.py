@@ -3,6 +3,10 @@ import random
 from datetime import datetime, timedelta
 import os
 
+from pymongo import MongoClient
+client = MongoClient("mongodb://localhost:27017/")
+db = client["onlineshop"]
+products_collection = db["customers"]
 
 # Helper functions
 def random_name():
@@ -38,11 +42,10 @@ def generate_product(product_id):
 
 # Generate and save JSON files
 num_products = 10000  # Adjust the number of products here
-products = [generate_product(product_id) for product_id in range(1, num_products + 1)]
+customers = [generate_product(product_id) for product_id in range(1, num_products + 1)]
 
 # Speichere alle Produkte in einer JSON-Datei
-output_file = "products.json"
-with open(output_file, "w", encoding="utf-8") as file:
-    json.dump(products, file, ensure_ascii=False, indent=4)
+for product in customers:
+    products_collection.insert_one(product)
 
-print(f"Alle {num_products} Produkte wurden in '{output_file}' gespeichert.")
+print(f"Alle {num_products} Produkte wurden in MongoDB-Lokal gespeichert.")
