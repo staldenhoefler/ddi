@@ -36,7 +36,7 @@ def add_features_for_electronics(connection):
         """
 
         for product in products:
-            features = ["4G", "5G", "Satellit", "3G"]
+            features = ["4G", "5G", "Satellit", "3G", 2, 5.2]
             features = random.sample(features, random.randint(1, len(features)))
             feature_name = "Netzwerktechnologie"
 

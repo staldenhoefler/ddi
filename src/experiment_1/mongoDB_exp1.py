@@ -16,7 +16,7 @@ def add_network_features_to_electronics():
             return
 
         # 2. Neue Eigenschaften hinzufügen
-        features = ["4G", "5G", "Satellit", "3G"]
+        features = ["4G", "5G", "Satellit", "3G", 2, 5.2]
 
         for product in electronics_products:
             # Wähle zufällige Werte aus den Features aus
